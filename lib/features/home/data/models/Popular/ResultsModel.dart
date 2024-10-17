@@ -90,7 +90,8 @@ class ResultsModel {
       overview: overview,
       posterPath: posterPath,
       releaseDate: releaseDate,
-      voteAverage: voteAverage
+      voteAverage: voteAverage,
+      id: id
     );
  }
 }

@@ -1,4 +1,5 @@
-import 'package:etfarrag/features/home/domain/entities/Recommended/RecommendedResultEntity.dart';
+
+import 'package:etfarrag/features/home/domain/entities/Popular/ResultsEntity.dart';
 
 /// adult : false
 /// backdrop_path : "/kXfqcdQKsToO0OUXHcrrNCHDBzO.jpg"
@@ -81,10 +82,17 @@ class RecommendedResultModel {
     map['vote_count'] = voteCount;
     return map;
   }
-RecommendedResultEntity toEntity(){
-    return RecommendedResultEntity(
+ResultsEntity toEntity(){
+    return ResultsEntity(
       posterPath: posterPath,
-      title: title
+      title: title,
+      originalTitle: originalTitle,
+      releaseDate: releaseDate,
+      backdropPath: backdropPath,
+      overview: overview,
+      voteAverage: voteAverage,
+      genreIds: genreIds,
+      id: id
     );
 }
 }

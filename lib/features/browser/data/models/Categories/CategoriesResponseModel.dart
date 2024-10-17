@@ -1,4 +1,6 @@
-import 'Genres.dart';
+import 'package:etfarrag/features/browser/domain/entities/Categories/CategoriesResponseEntity.dart';
+
+import 'GenreModel.dart';
 
 /// status_code : 7
 /// status_message : "Invalid API key: You must be granted a valid key."
@@ -19,14 +21,14 @@ class CategoriesResponseModel {
     if (json['genres'] != null) {
       genres = [];
       json['genres'].forEach((v) {
-        genres?.add(Genres.fromJson(v));
+        genres?.add(GenreModel.fromJson(v));
       });
     }
   }
   num? statusCode;
   String? statusMessage;
   bool? success;
-  List<Genres>? genres;
+  List<GenreModel>? genres;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -38,5 +40,11 @@ class CategoriesResponseModel {
     }
     return map;
   }
-
+CategoriesResponseEntity toEntity(){
+    return CategoriesResponseEntity(
+      success: success,
+      statusMessage: statusMessage,
+      genres: genres?.map((e) => e.toEntity()).toList()
+    );
+}
 }

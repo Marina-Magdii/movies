@@ -7,13 +7,7 @@ class NewReleaseUseCase {
   PopularRepo repo;
   @factoryMethod
   NewReleaseUseCase(this.repo);
-  Future<Either<NewReleasesEntity,String>>call()async{
-    var result = await repo.getNewResponse();
-    return result.fold(
-            (response) {
-              return Left(response);
-            }, (error){
-              return Right(error);
-    });
+  Future<Either<NewReleasesEntity,String>>call(){
+    return repo.getNewResponse();
   }
 }

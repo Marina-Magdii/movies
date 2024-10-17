@@ -5,6 +5,7 @@ class ApiConstants {
   static const String newReleaseDomain ="/3/movie/upcoming";
   static const String recommendedDomain ="/3/movie/top_rated";
   static const String categoriesDomain ="/3/genre/movie/list";
+  static const String eachCategoryDomain ="/3/discover/movie";
   static String searchDomain(String query) =>"/3/search/movie?$query";
   static String similarDomain(String id) =>"/3/movie/$id/similar";
   static String detailsDomain(String id) =>"/3/movie/$id";

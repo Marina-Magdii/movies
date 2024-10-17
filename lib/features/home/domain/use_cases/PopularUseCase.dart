@@ -9,16 +9,7 @@ class PopularUseCase {
   PopularRepo repoImpl;
   @factoryMethod
   PopularUseCase(this.repoImpl);
-  Future<Either<PopularEntity, String>> call() async {
-    var result = await repoImpl.getResponse();
-    return result.fold((response) {
-      if (response.success == false) {
-        return Right(response.statusMessage!);
-      } else {
-        return Left(response);
-      }
-    }, (error) {
-      return Right(error);
-    });
-  }
+  Future<Either<PopularEntity, String>> call()  {
+  return repoImpl.getResponse();
+     }
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "156644208871",
+    "project_id": "etfarrag-e26c5",
+    "storage_bucket": "etfarrag-e26c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156644208871:android:3e1139f0eb807d54cf7242",
+        "android_client_info": {
+          "package_name": "com.example.etfarrag"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBM92XquU3CBMl95POGog1ChzvxBxYbZ10"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

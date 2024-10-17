@@ -1,5 +1,4 @@
-import 'RecommendedResultEntity.dart';
-
+import 'package:etfarrag/features/home/domain/entities/Popular/ResultsEntity.dart';
 /// status_message : "Invalid API key: You must be granted a valid key."
 /// success : false
 /// results : [{"poster_path":"/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg","title":"The Shawshank Redemption"}]
@@ -12,7 +11,7 @@ class RecommendedResponseEntity {
 
   String? statusMessage;
   bool? success;
-  List<RecommendedResultEntity>? results;
+  List<ResultsEntity>? results;
 
 
 }

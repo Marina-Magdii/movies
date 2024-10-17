@@ -1,3 +1,5 @@
+import 'package:etfarrag/features/home/domain/entities/Popular/ResultsEntity.dart';
+
 import 'Dates.dart';
 import 'NewReleaseResultEntity.dart';
 
@@ -19,5 +21,5 @@ class NewReleasesEntity {
 
   String? statusMessage;
   bool? success;
-  List<NewReleaseResultEntity>? results;
+  List<ResultsEntity>? results;
 }

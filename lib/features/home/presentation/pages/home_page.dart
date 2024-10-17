@@ -1,3 +1,5 @@
+import 'package:etfarrag/core/ColorManager.dart';
+import 'package:etfarrag/core/StringsManager.dart';
 import 'package:etfarrag/features/browser/presentation/pages/browser_view.dart';
 import 'package:etfarrag/features/home/presentation/pages/home_view.dart';
 import 'package:etfarrag/features/search/presentation/pages/search_view.dart';
@@ -28,7 +30,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: tabs[currentIndex],
+      body: Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(StringsManager.backGround),fit: BoxFit.fill
+              )
+          ),
+          child: tabs[currentIndex]),
       bottomNavigationBar: BottomNavigationBar(
         selectedLabelStyle: TextStyle(
           color: Colors.black,
@@ -36,22 +44,22 @@ class _HomePageState extends State<HomePage> {
         ),
         items: [
           BottomNavigationBarItem(
-            label: "Home",
-            backgroundColor: Colors.yellow,
-              icon: SvgPicture.asset("assets/images/Home icon.svg",color: Colors.black,height: 25.h,),
+            label: StringsManager.home,
+            backgroundColor: ColorManager.primary,
+              icon: SvgPicture.asset(StringsManager.homeIcon,color: Colors.black,height: 25.h,),
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.yellow,
-            label: "Search",
-              icon: SvgPicture.asset("assets/images/search-2.svg",color: Colors.black,height: 25.h)),
+            backgroundColor: ColorManager.primary,
+            label: StringsManager.search,
+              icon: SvgPicture.asset(StringsManager.searchIcon,color: Colors.black,height: 25.h)),
           BottomNavigationBarItem(
-            backgroundColor: Colors.yellow,
-            label: "Browser",
-              icon: SvgPicture.asset("assets/images/Icon material-movie.svg",color: Colors.black,height: 25.h)),
+            backgroundColor: ColorManager.primary,
+            label: StringsManager.browser,
+              icon: SvgPicture.asset(StringsManager.browserIcon,color: Colors.black,height: 25.h)),
           BottomNavigationBarItem(
-            backgroundColor: Colors.yellow,
-            label: "Wishlist",
-              icon: SvgPicture.asset("assets/images/Icon ionic-md-bookmarks.svg",color: Colors.black,height: 25.h)),
+            backgroundColor: ColorManager.primary,
+            label: StringsManager.wishList,
+              icon: SvgPicture.asset(StringsManager.wishListIcon,color: Colors.black,height: 25.h)),
         ],
         currentIndex: currentIndex,
         onTap: (index){

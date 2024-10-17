@@ -1,12 +1,14 @@
+import '../../../domain/entities/Categories/GenreEntity.dart';
+
 /// id : 28
 /// name : "Action"
 
-class Genres {
-  Genres({
+class GenreModel {
+  GenreModel({
       this.id, 
       this.name,});
 
-  Genres.fromJson(dynamic json) {
+  GenreModel.fromJson(dynamic json) {
     id = json['id'];
     name = json['name'];
   }
@@ -19,5 +21,10 @@ class Genres {
     map['name'] = name;
     return map;
   }
-
+GenreEntity toEntity(){
+    return GenreEntity(
+      id: id,
+      name: name
+    );
+}
 }

@@ -1,4 +1,4 @@
-import 'Genres.dart';
+import 'GenreEntity.dart';
 
 /// status_message : "Invalid API key: You must be granted a valid key."
 /// success : false
@@ -10,28 +10,7 @@ class CategoriesResponseEntity {
       this.success, 
       this.genres,});
 
-  CategoriesResponseEntity.fromJson(dynamic json) {
-    statusMessage = json['status_message'];
-    success = json['success'];
-    if (json['genres'] != null) {
-      genres = [];
-      json['genres'].forEach((v) {
-        genres?.add(Genres.fromJson(v));
-      });
-    }
-  }
   String? statusMessage;
   bool? success;
-  List<Genres>? genres;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['status_message'] = statusMessage;
-    map['success'] = success;
-    if (genres != null) {
-      map['genres'] = genres?.map((v) => v.toJson()).toList();
-    }
-    return map;
-  }
-
+  List<GenreEntity>? genres;
 }
