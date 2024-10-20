@@ -33,56 +33,48 @@ class _BrowserViewState extends State<BrowserView> {
              ),
           ),
         ),
-        body: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(StringsManager.backGround)
-                ,fit: BoxFit.fill
-            )
-          ),
-          child: BlocBuilder<CategoriesCubit, CategoriesState>(
-            builder: (context, state) {
-              switch(state){
+        body: BlocBuilder<CategoriesCubit, CategoriesState>(
+          builder: (context, state) {
+            switch(state){
 
-                case CategoriesInitial():
-                  {return Container();}
-                case CategoriesError():
-                  {
-                    return Column(
-                      children: [
-                        Text(state.error),
-                        ElevatedButton(onPressed: (){
-                          setState(() {
-                          });
-                        }, child: const Text(StringsManager.tryAgain))
-                      ],
-                    );
-                  }
-                case CategoriesSuccess():
-                 {
-                   List<GenreEntity> genres = state.entity.genres??[];
-                   return Expanded(
-                   child: GridView.builder(
-                     itemCount: genres.length,
-                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                         crossAxisCount: 2),
-                     itemBuilder: (context, index) {
-                       return CategoriesItem(
-                         model: genres[index],
-                         onPress: () {
-                           Navigator.pushNamed(context, CategoryListView.routeName,
-                               arguments: genres[index]);
-                         },
-                       );
-                     },
-                   ),
-                 );}
-                case CategoriesLoading():
-                  {return const Center(child: CircularProgressIndicator(),);}
-              }
+              case CategoriesInitial():
+                {return Container();}
+              case CategoriesError():
+                {
+                  return Column(
+                    children: [
+                      Text(state.error),
+                      ElevatedButton(onPressed: (){
+                        setState(() {
+                        });
+                      }, child: const Text(StringsManager.tryAgain))
+                    ],
+                  );
+                }
+              case CategoriesSuccess():
+               {
+                 List<GenreEntity> genres = state.entity.genres??[];
+                 return Expanded(
+                 child: GridView.builder(
+                   itemCount: genres.length,
+                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                       crossAxisCount: 2),
+                   itemBuilder: (context, index) {
+                     return CategoriesItem(
+                       model: genres[index],
+                       onPress: () {
+                         Navigator.pushNamed(context, CategoryListView.routeName,
+                             arguments: genres[index]);
+                       },
+                     );
+                   },
+                 ),
+               );}
+              case CategoriesLoading():
+                {return const Center(child: CircularProgressIndicator(),);}
+            }
 
-            },
-          ),
+          },
         ),
       ),
     );

@@ -16,37 +16,40 @@ class CategoryDetailsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          height: 120.h,
-          width: 100.w,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20.r),
-              image: DecorationImage(
-                  image: NetworkImage("${StringsManager.image}$image"),
-                  fit: BoxFit.fill)),
-        ),
-        SizedBox(
-          width: 10.w,
-        ),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                  maxLines: 1,
-                  text,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.titleMedium),
-              Text(description,
-                  maxLines: 5,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.titleSmall),
-            ],
+    return Padding(
+      padding:REdgeInsets.all(10.0),
+      child: Row(
+        children: [
+          Container(
+            height: 120.h,
+            width: 100.w,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.r),
+                image: DecorationImage(
+                    image: NetworkImage("${StringsManager.image}$image"),
+                    fit: BoxFit.fill)),
           ),
-        ),
-      ],
+          SizedBox(
+            width: 10.w,
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                    maxLines: 1,
+                    text,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.titleMedium),
+                Text(description,
+                    maxLines: 5,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.titleSmall),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -23,56 +23,53 @@ class _WatchlistViewState extends State<WatchlistView> {
 
   @override
   Widget build(BuildContext context) {
-    MovieCollection provider = Provider.of<MovieCollection>(context);
-    return Scaffold(
-        appBar: AppBar(
-          title: Padding(
-            padding: REdgeInsets.all(10.0),
-            child: const Text(
-              StringsManager.wishListView,
+     MovieCollection provider =  Provider.of<MovieCollection>(context);
+     return Provider(
+      create: (BuildContext context) { Provider.of<MovieCollection>(context); },
+      child: Scaffold(
+          appBar: AppBar(
+            title: Padding(
+              padding: REdgeInsets.all(10.0),
+              child: const Text(
+                StringsManager.wishListView,
+              ),
             ),
           ),
-        ),
-        body: Container(
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(
-                        "assets/images/background-image_811396-33263.jpg"),
-                    fit: BoxFit.fill)),
-            child: FutureBuilder<List<ResultsEntity>>(
-              future: provider.getWishlist(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<List<ResultsEntity>> snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-                if (snapshot.hasError) {
-                  return Column(
-                    children: [
-                      Text(
-                        snapshot.error.toString(),
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                      ElevatedButton(
-                          onPressed: () {
-                            setState(() {});
-                          },
-                          child: const Text(StringsManager.tryAgain))
-                    ],
-                  );
-                }
-                List<ResultsEntity> movies = snapshot.data ?? [];
-                return ListView.builder(
-                  itemCount: movies.length,
-                  itemBuilder: (context, index) {
-                    return CategoryDetailsItem(
-                      image: movies[index].posterPath ?? "",
-                      text: movies[index].title ?? "",
-                      description: movies[index].overview ?? "",
-                    );
-                  },
+          body: FutureBuilder<List<ResultsEntity>>(
+            future: provider.getWishlist(),
+            builder: (BuildContext context,
+                AsyncSnapshot<List<ResultsEntity>> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              if (snapshot.hasError) {
+                return Column(
+                  children: [
+                    Text(
+                      snapshot.error.toString(),
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          setState(() {});
+                        },
+                        child: const Text(StringsManager.tryAgain))
+                  ],
                 );
-              },
-            )));
+              }
+              List<ResultsEntity> movies = snapshot.data ?? [];
+              return ListView.builder(
+                itemCount: movies.length,
+                itemBuilder: (context, index) {
+                  return CategoryDetailsItem(
+                    image: movies[index].posterPath ?? "",
+                    text: movies[index].title ?? "",
+                    description: movies[index].overview ?? "",
+                  );
+                },
+              );
+            },
+          )),
+    );
   }
 }

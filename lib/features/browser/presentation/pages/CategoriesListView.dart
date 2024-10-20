@@ -35,65 +35,58 @@ class _CategoryListState extends State<CategoryListView> {
             ),
           ),
         ),
-        body: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(StringsManager.backGround),fit: BoxFit.fill
-              )
-          ),
-          child: Padding(
-            padding: REdgeInsets.all(30),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 40.h,
-                ),
-                BlocBuilder<CategoryDetailsCubit, CategoryDetailsState>(
-                builder: (context, state) {
-              switch(state){
-
-                case CategoryDetailsInitial():
-          {return Container();}
-                case CategoryDetailsError():
-          {
-            return Column(
-              children: [
-                Text(state.error),
-                ElevatedButton(onPressed: (){
-                  setState(() {
-                  });
-                }, child: const Text(StringsManager.tryAgain))
-              ],
-            );
-          }
-                case CategoryDetailsSuccess():
-          {
-            List<ResultsEntity> films = state.entity.results??[];
-            print(films[0].posterPath);
-            return Expanded(
-              child: ListView.separated(
-                separatorBuilder:(context, index) => const Divider(),
-                itemCount: films.length,
-                itemBuilder: (context, index) {
-                  return CategoryDetailsItem(
-                    image: films[index].posterPath??"",
-                    text: films[index].title.toString(),
-                    description: films[index].overview.toString(),
-                   );
-                },
+        body: Padding(
+          padding: REdgeInsets.all(30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 40.h,
               ),
-            );
-          }
-                case CategoryDetailsLoading():
-          {
-            return const Center(child: CircularProgressIndicator());
-          }
-              }
-                },
-              )
-              ],
+              BlocBuilder<CategoryDetailsCubit, CategoryDetailsState>(
+              builder: (context, state) {
+            switch(state){
+
+              case CategoryDetailsInitial():
+        {return Container();}
+              case CategoryDetailsError():
+        {
+          return Column(
+            children: [
+              Text(state.error),
+              ElevatedButton(onPressed: (){
+                setState(() {
+                });
+              }, child: const Text(StringsManager.tryAgain))
+            ],
+          );
+        }
+              case CategoryDetailsSuccess():
+        {
+          List<ResultsEntity> films = state.entity.results??[];
+          print(films[0].posterPath);
+          return Expanded(
+            child: ListView.separated(
+              separatorBuilder:(context, index) => const Divider(),
+              itemCount: films.length,
+              itemBuilder: (context, index) {
+                return CategoryDetailsItem(
+                  image: films[index].posterPath??"",
+                  text: films[index].title.toString(),
+                  description: films[index].overview.toString(),
+                 );
+              },
             ),
+          );
+        }
+              case CategoryDetailsLoading():
+        {
+          return const Center(child: CircularProgressIndicator());
+        }
+            }
+              },
+            )
+            ],
           ),
         ),
       ),

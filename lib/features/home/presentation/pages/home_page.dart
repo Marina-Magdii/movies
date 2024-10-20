@@ -31,11 +31,6 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(StringsManager.backGround),fit: BoxFit.fill
-              )
-          ),
           child: tabs[currentIndex]),
       bottomNavigationBar: BottomNavigationBar(
         selectedLabelStyle: TextStyle(

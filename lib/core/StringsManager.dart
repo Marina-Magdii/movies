@@ -3,7 +3,6 @@ class StringsManager {
   static const String tryAgain =  "Try Again";
   static const String recommended =  "Recommended";
   static const String image =  "https://image.tmdb.org/t/p/w500";
-  static const String backGround =  "assets/images/background-image_811396-33263.jpg";
   static const String defaultImage =  "https://image.tmdb.org/t/p/w500/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg";
   static const String home =  "Home";
   static const String homeIcon =  "assets/images/Home icon.svg";

@@ -40,7 +40,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   dio: ^5.7.0
   pretty_dio_logger: ^1.4.0
-  injectable: ^2.4.4
+  injectable: ^2.5.0
   get_it:
   dartz: ^0.10.1
   connectivity_plus: ^6.0.5

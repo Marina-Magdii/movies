@@ -17,7 +17,7 @@ class AppTheme{
             size: 20.sp
           )
         ),
-        scaffoldBackgroundColor: ColorManager.primary,
+        scaffoldBackgroundColor: Colors.transparent,
   textTheme: TextTheme(
     titleLarge: TextStyle(
       fontWeight: FontWeight.bold,
